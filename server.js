@@ -24,33 +24,46 @@ var server = http.createServer(function(request, response){
   if(path === '/'){
     response.statusCode = 200
     response.setHeader('Content-Type', 'text/html;charset=utf-8')
-    response.write(`<!DOCTYPE html>
-
-<head>
-    
+    response.write(`
+    <!DOCTYPE html>
+    <html lang="zh-CN">
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lianxi</title>
     <link rel="stylesheet" href="/x">
-</head>
-<body>
-    <h1>标题</h1>
-    <script src="/y.css"></script>
-</body>
-</html>`)
+    </head>
+    <body>
+    <h1>看到了么我是标题</h1>
+    </body>
+     </html>`)
     response.end()
   } else if(path === '/x'){
     response.statusCode = 200
     response.setHeader('Content-Type', 'text/css;charset=utf-8')
-    response.write(`h1{color: red;}`)
+    response.write(`h1{color:red}`) // 这里是浏览器对请求的回应
     response.end()
   } else {
     response.statusCode = 404
-    response.setHeader('Content-Type', 'text/html;charset=utf-8')
-    response.write(` 你访问的页面不存在`)
+    response.setHeader('Content-Type',  'text/html;charset=utf-8')
+    response.write(`<!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jirengu</title>
+    <link rel="stylesheet" href="/x">
+    </head>
+    <body>
+    <h1>你访问的页面不存在,快爬</h1>
+    </body>
+     </html>\n`)
     response.end()
   }
-
   /******** 代码结束，下面不要看 ************/
 })
 
 server.listen(port)
-console.log('监听 ' + port + ' 成功\n请用在空中转体720度然后用电饭煲打开 http://localhost:' + port)
-
+console.log('监听 ' + port + ' 成功\n请用在空中转体720度然后用电饭煲打开 http://localhost:' + port) 
